@@ -1,0 +1,329 @@
+.bottom-sheet-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0);
+  z-index: 999;
+  pointer-events: none;
+  transition: background-color 0.3s ease;
+}
+
+.bottom-sheet-backdrop.open {
+  background-color: rgba(0, 0, 0, 0.5);
+  pointer-events: auto;
+}
+
+.bottom-sheet {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 90vh;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  border-radius: 20px 20px 0 0;
+  box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  transform: translateY(100%);
+  will-change: transform;
+  user-select: none;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.bottom-sheet.open {
+  pointer-events: auto;
+}
+
+.bottom-sheet-handle {
+  width: 40px;
+  height: 4px;
+  background-color: #d1d5db;
+  border-radius: 2px;
+  margin: 12px auto 8px;
+  cursor: grab;
+  transition: background-color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.bottom-sheet-handle:hover {
+  background-color: #9ca3af;
+}
+
+.bottom-sheet-handle:active {
+  cursor: grabbing;
+  background-color: #6b7280;
+}
+
+.bottom-sheet-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  border-bottom: 1px solid #e5e7eb;
+  flex-shrink: 0;
+}
+
+.bottom-sheet-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.close-button {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: #f3f4f6;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.close-button:hover {
+  background: #e5e7eb;
+  color: #374151;
+  transform: scale(1.1);
+}
+
+.close-button:active {
+  transform: scale(0.95);
+}
+
+.bottom-sheet-content {
+  flex: 1;
+  padding: 24px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.bottom-sheet-controls {
+  display: flex;
+  gap: 12px;
+  padding: 16px 24px;
+  border-top: 1px solid #e5e7eb;
+  background: #f9fafb;
+  flex-shrink: 0;
+}
+
+.bottom-sheet-controls button {
+  flex: 1;
+  padding: 12px 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #374151;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.bottom-sheet-controls button:hover:not(:disabled) {
+  background: #f3f4f6;
+  border-color: #9ca3af;
+  transform: translateY(-1px);
+}
+
+.bottom-sheet-controls button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.bottom-sheet-controls button:disabled {
+  background: #e5e7eb;
+  color: #9ca3af;
+  cursor: not-allowed;
+  border-color: #d1d5db;
+}
+
+/* Content styling for demo */
+.demo-content {
+  line-height: 1.6;
+  color: #374151;
+}
+
+.demo-content h3 {
+  color: #111827;
+  margin-bottom: 12px;
+}
+
+.demo-content p {
+  margin-bottom: 16px;
+}
+
+.demo-list {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0;
+}
+
+.demo-list li {
+  padding: 12px 16px;
+  margin: 8px 0;
+  background: #f3f4f6;
+  border-radius: 8px;
+  border-left: 4px solid #3b82f6;
+}
+
+.demo-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 16px 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.demo-card h4 {
+  margin: 0 0 8px 0;
+  color: #111827;
+}
+
+.demo-card p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .bottom-sheet {
+    height: 95vh;
+    border-radius: 16px 16px 0 0;
+  }
+  
+  .bottom-sheet-header {
+    padding: 12px 20px;
+  }
+  
+  .bottom-sheet-header h2 {
+    font-size: 1.25rem;
+  }
+  
+  .bottom-sheet-content {
+    padding: 20px;
+  }
+  
+  .bottom-sheet-controls {
+    padding: 12px 20px;
+    gap: 8px;
+  }
+  
+  .bottom-sheet-controls button {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .bottom-sheet {
+    height: 98vh;
+    border-radius: 12px 12px 0 0;
+  }
+  
+  .bottom-sheet-header {
+    padding: 10px 16px;
+  }
+  
+  .bottom-sheet-content {
+    padding: 16px;
+  }
+  
+  .bottom-sheet-controls {
+    flex-direction: column;
+    padding: 12px 16px;
+  }
+  
+  .bottom-sheet-controls button {
+    padding: 12px;
+  }
+}
+
+/* Smooth scrolling for content */
+.bottom-sheet-content {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar for webkit browsers */
+.bottom-sheet-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.bottom-sheet-content::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 3px;
+}
+
+.bottom-sheet-content::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+.bottom-sheet-content::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Focus styles for accessibility */
+.bottom-sheet:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: -2px;
+}
+
+.close-button:focus,
+.bottom-sheet-controls button:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Animation for backdrop */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+/* Prevent body scroll when bottom sheet is open */
+body.bottom-sheet-open {
+  overflow: hidden;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .bottom-sheet {
+    border: 2px solid #000000;
+  }
+  
+  .bottom-sheet-handle {
+    background-color: #000000;
+  }
+  
+  .close-button {
+    border: 1px solid #000000;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .bottom-sheet,
+  .bottom-sheet-backdrop,
+  .close-button,
+  .bottom-sheet-controls button {
+    transition: none;
+  }
+  
+  .bottom-sheet-handle {
+    transition: none;
+  }
+}
